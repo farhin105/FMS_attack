@@ -1,5 +1,4 @@
 import bson
-import numpy as np
 
 
 # RC4 Implementation
@@ -63,7 +62,7 @@ def swap(arr,i,j):
     arr[j] = tmp
 
 def get_key_with_highest_frequency(frequency):
-    max_frequency = np.max(frequency)
+    max_frequency = max(frequency)
     key = frequency.index(max_frequency)
     return key
 
