@@ -133,22 +133,9 @@ def fms_attack(packets):
     print("secret key = ",secret_key)
 
     # directly save the key - hex
-    with open("sample1.bin", "bw") as file:
-        file.write(bytearray(secret_key))
-    #file.close()
-
-    secret_key_bin = map(lambda x: f'{x:0>8b}', secret_key)
-    secret_key_str = ''.join(list(secret_key_bin))
-    
-    print("secret key binary = ",secret_key_str)
-    
-    new_string = bytearray(secret_key_str,"ascii")
-    print("new string = ",new_string)
-
-    with open("sample2.bin", "bw") as file:
-        file.write(bytearray(secret_key_str,"ascii"))
-    
-
+    with open("key.bin", "bw") as file:
+        file.write(bytes(secret_key))
+   
 
 
 def main():
@@ -156,12 +143,12 @@ def main():
     
     # This loads the example packets we give you for local testing. 
     # Please be adviced that in the pipeline you need to read packets.bson !
-    with open("example_packets.bson", "rb") as f:
+    with open("packets.bson", "rb") as f:
         packets = bson.loads(f.read())["packets"]
-    fms_attack(packets)
+    
     
     # todo implement the FMS attack
-
+    fms_attack(packets)
 
 if __name__ == '__main__':
     main()
